@@ -15,5 +15,4 @@ Imports: dplyr,
          tictoc,
          data.table,
          tcltk
-Remotes: 
-    github::THLfi/read.gt3x
+Remotes: THLfi/read.gt3x

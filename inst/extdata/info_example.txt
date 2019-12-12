@@ -1,0 +1,22 @@
+Serial Number: XXXXWSXE
+Device Type: wGT3XBT
+Firmware: 1.9.2
+Battery Voltage: 4,06
+Sample Rate: 30
+Start Date: 636610608000000000
+Stop Date: 636616656000000000
+Last Sample Time: 636616656000000000
+TimeZone: -03:00:00
+Download Date: 636610608000000000
+Board Revision: 4
+Unexpected Resets: 0
+Acceleration Scale: 256.0
+Acceleration Min: -8.0
+Acceleration Max: 8.0
+Sex: XXXX
+Height: 185
+Mass: 700
+Age: 00
+Limb: Waist
+DateOfBirth: 636610608000000000
+Subject Name: Study participant number 653
