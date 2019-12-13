@@ -29,7 +29,6 @@ divide_1e7 <- function(y) {
 #' @title transform_dates
 #' 
 #' @description Converting the date-time information to the dd-mm-yy format
-#' 
 #' @details Util to change the format of the date-times to the format used in the .csv file. The date-time of the txt file come in the format: number of days from 0001-01-01.
 #' @param x default = output of the [divide_1e7] function. the object containing the date to be changed.
 #' @return the date-ime from the .txt file in the "dd/mm/yyyy" format
@@ -46,7 +45,6 @@ transform_dates <- function(x) {
 #### READ_INFO function
 
 #' @title Read Info 
-#' 
 #' @description Reads the metadata of the gt3x file 
 #' @importFrom magrittr "%>%"
 #' @importFrom tidyr "separate"
@@ -82,7 +80,8 @@ read_info <- function(file_txt = file_txt) {
 #' @param infofile default = info_filedf (output from the [read_info] function) data frame containing the metadata generated through the read_info function
 #' @param dest_csv  default = destination folder  the folder to which you want to generate the header file
 #' @importFrom hms "as_hms"
-#' @return a .csv file named identificationRAW.csv wuth the header
+#' @return a .csv file named "identificationRAW.csv" wuth the header
+
 
 
 
@@ -110,7 +109,6 @@ save_header <- function(df_file = info_filedf, dest_csv = csv_folder, file_id)
 #' @title header_csv
 #' 
 #' @description Reads the metadata from gt3x files and savaes as csv
-#' 
 #' @details Reads the metadata from the txt file located inside the .gt3x file provided by actigraph using the read_info function and saves it as a csv document using the save_header function.
 #' @param origin the path to the .gt3xfile to be converted
 
@@ -174,7 +172,6 @@ header_csv <- function( origin ) {
 #' @title save_accel
 #' 
 #' @description  Saves acceleration of the given file 
-#' 
 #' @details Reads the binary data inside the .gt3x file and saves it in .csv format
 #' @param acc.file the path to te .gt3x file 
 
