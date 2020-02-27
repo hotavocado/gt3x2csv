@@ -105,11 +105,11 @@ save_header <- function(df_file = info_filedf, dest_csv = csv_folder, file_id)
 
 header_csv <- function( origin ) {
   
-  dest <- substrRight( origin, j = 13)
-  
+  #dest <- substrRight( origin, j = 13)
+  dest <- origin
   #file name 
   
-  file_id <- substrRight( origin, 7, 5)
+  file_id <- str_replace(origin, '_.*$', '')
   
   print( file_id)
   
@@ -131,7 +131,7 @@ header_csv <- function( origin ) {
   
   # Unzipping the file 
   
-  read.gt3x::unzip_single_gt3x( origin, location = paste0( dest, "/unzip"), verbose = FALSE)
+  read.gt3x::unzip_single_gt3x(origin, location = paste0( dest, "/unzip"), verbose = FALSE)
   
   # Creating the path to the desired .txt file
   
@@ -231,24 +231,21 @@ gt3x_2_csv <- function( gt3x_file )
 {
   print( "Started processing file" )
   
-  file_id <- substrRight( gt3x_file, 7, 5)
+  file_id <- str_replace(gt3x_file, '_.*$', '')
   
-  tictoc::tic( paste( "File named", file_id, " processed" ) )
+  tictoc::tic( paste( "File named", file_id, " processed" ))
   
   header_csv( gt3x_file )
   
   save_accel( gt3x_file )
   
-  dest <- substrRight( gt3x_file, j = 13 )
+  dest <- gt3x_file
   
-  file_id <- substrRight( gt3x_file, 7, 5 )
+  file_id <- str_replace(gt3x_file, '_.*$', '')
   
   unzipath <- paste0( dest, "/unzip")
   
-  
   # Unzipped folder address
-  
-  
   unzip_folder_addres <- paste0( unzipath,"/", file_id )
   
   unlink( unzip_folder_addres, recursive = TRUE )
