@@ -1,6 +1,9 @@
-# gt3x2csv
+# gt3x2csv (hotavocado edit)
+
+This is an edited version of danilodpsanto/gt3x2csv package, currently tailored for my personal use.
 
 `gt3x2csv` is an R package designed to convert Actigraph gt3x files to csv files with the same data structure exported by the Actilife software.
+
 
 ## Installation
 
@@ -9,7 +12,7 @@
 install.packages("gt3x2csv")
 # Or the development version from GitHub
 # install.packages("devtools")
-devtools::install_github("danilodpsantos/gt3x2csv")
+devtools::install_github("hotavocado/gt3x2csv")
 ```
 
 ## Usage
