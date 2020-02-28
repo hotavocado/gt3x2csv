@@ -92,13 +92,13 @@ gt3x_2_csv <- function(gt3x_file) {
   {
     #formatting the metadata to the actilife header form
     
-    header_txt <- paste0( "------------ Data File Created By ActiGraph GT3X+ ActiLife v6.13.4 Firmware v1.9.2 date format dd/MM/yyyy at", df_file$Sample.Rate, "Hz  Filter Normal -----------\n",
+    header_txt <- paste0( "------------ Data File Created By ActiGraph GT3X+ ActiLife v6.13.4 Firmware v1.9.2 date format dd/MM/yyyy at ", df_file$Sample.Rate, "Hz  Filter Normal -----------\n",
                           "Serial Number: ", df_file$Serial.Number, "\n",
                           "Start Time ", as_hms(df_file$Start.Date), "\n",
-                          "Start Date ", format(df_file$Start.Date, "%d/%m/%Y"), "\n",
+                          "Start Date ", format(df_file$Start.Date, "%m/%d/%Y"), "\n",
                           "Epoch Period (hh:mm:ss) 00:00:00\n",
                           "Download Time ", as_hms(df_file$Download.Date), "\n",
-                          "Download Date ", format(df_file$Download.Date, "%d/%m/%Y"), "\n",
+                          "Download Date ", format(df_file$Download.Date, "%m/%d/%Y"), "\n",
                           "Current Memory Address: 0\n",
                           "Current Battery Voltage: ", sub(",", ".", df_file$Battery.Voltage),"     Mode = 12\n",
                           "--------------------------------------------------\n")
