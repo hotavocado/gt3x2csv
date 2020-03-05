@@ -16,7 +16,7 @@
 
 
 gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
-
+  
   print("Preparing machine")
   
   tictoc::tic ("Ready to process")
@@ -30,9 +30,9 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
                           full.names = TRUE)
   
   bar <- tcltk::tkProgressBar(title = "Converting the gt3x files to csv. Progress:",
-                       min = 0,
-                       max = length(file_names),
-                       width = 500)
+                              min = 0,
+                              max = length(file_names),
+                              width = 500)
   
   progresso <- function(n) {tcltk::setTkProgressBar(bar, n, label = paste0(round(n/length(file_names)*100, 0), "% completed"))}
   opts <- list(progress = progresso)
@@ -40,19 +40,19 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
   
   tictoc::toc()
   
-  tictoc::tic(paste("Processed", length(file_names), "files:"))
-  
   print(paste("Started processing", length(file_names), "files"))
   
+  tictoc::tic(paste("Processed", length(file_names), "files:"))
+  
   foreach::foreach (i = 1:length(file_names),
-           .export = c("gt3x_2_csv","substrRight", "divide_1e7", "header_csv", "read_info", "save_accel", "save_header", "transform_dates"),
-           .packages = c("tictoc", "read.gt3x", "tidyverse", "data.table", "tcltk"),
-           .inorder = TRUE,
-           .options.snow = opts, .errorhandling = "pass") %dopar% {
-             
-            gt3x_2_csv(file_names[i])
-            gc(verbose = FALSE)
-           }
+                    .export = c("gt3x_2_csv"),
+                    .packages = c("tictoc", "read.gt3x", "tidyverse", "data.table", "tcltk"),
+                    .inorder = TRUE,
+                    .options.snow = opts, .errorhandling = "pass") %dopar% {
+                      
+                      gt3x_2_csv(file_names[i])
+                      gc(verbose = FALSE)
+                    }
   
   tictoc::toc()
   
@@ -60,6 +60,8 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
   
   close(bar)
   
-  #unlink(paste0(folder, "/unzip"), recursive = TRUE)
+  folderPath <- normalizePath(folder)
+  parentPath <- dirname(folderPath)
+  unlink(paste0(parentPath, "/csv/unzip"), recursive = TRUE)
   
 }

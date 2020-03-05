@@ -207,7 +207,7 @@ gt3x_2_csv <- function(gt3x_file) {
   sink()
   
   #delete unzipped content
-  unlink(paste0(destPath, "/unzip"), recursive = TRUE)
+  unlink(paste0(destPath, "/unzip/", file_id), recursive = TRUE)
   
   tictoc::toc()
   
