@@ -19,18 +19,17 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
 
   print("Preparing machine")
   
-  tictoc:: tic ("Ready to process")
+  tictoc::tic ("Ready to process")
   
   cluster <- parallel::makePSOCKcluster(n.cores)
   
   doSNOW::registerDoSNOW(cluster)
   
-  
   file_names<- list.files(folder,
                           pattern = ".gt3x",
                           full.names = TRUE)
   
- bar <- tcltk::tkProgressBar(title = "Converting the gt3x files to csv. Progress:",
+  bar <- tcltk::tkProgressBar(title = "Converting the gt3x files to csv. Progress:",
                        min = 0,
                        max = length(file_names),
                        width = 500)
@@ -51,8 +50,8 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
            .inorder = TRUE,
            .options.snow = opts, .errorhandling = "pass") %dopar% {
              
-             gt3x_2_csv(file_names[i])
-             gc(verbose = FALSE)
+            gt3x_2_csv(file_names[i])
+            gc(verbose = FALSE)
            }
   
   tictoc::toc()
@@ -61,6 +60,6 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
   
   close(bar)
   
-  unlink(paste0(folder, "/unzip"), recursive = TRUE)
+  #unlink(paste0(folder, "/unzip"), recursive = TRUE)
   
 }

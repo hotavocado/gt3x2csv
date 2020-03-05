@@ -192,6 +192,8 @@ gt3x_2_csv <- function(gt3x_file) {
     
   } 
   
+  sink(paste0(destPath, gt3x_file, '_log.txt'))
+  
   file_id <- str_replace(basename(filePath), '\\..*$', '')
   
   message("Started processing file ", file_id, '.gt3x')
@@ -202,8 +204,10 @@ gt3x_2_csv <- function(gt3x_file) {
   
   save_accel(gt3x_file)
   
+  sink()
+  
   #delete unzipped content
-  unlink(paste0(destPath, "/unzip"), recursive = TRUE )
+  unlink(paste0(destPath, "/unzip"), recursive = TRUE)
   
   tictoc::toc()
   
