@@ -192,9 +192,9 @@ gt3x_2_csv <- function(gt3x_file) {
     
   } 
   
-  sink(paste0(destPath, gt3x_file, '_log.txt'))
-  
   file_id <- str_replace(basename(filePath), '\\..*$', '')
+  
+  sink(paste0(destPath, file_id, '_log.txt'))
   
   message("Started processing file ", file_id, '.gt3x')
   
