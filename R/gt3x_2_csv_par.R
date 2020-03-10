@@ -46,12 +46,11 @@ gt3x_2_csv_par <- function(folder, n.cores = (parallel::detectCores())-1) {
   
   foreach::foreach (i = 1:length(file_names),
                     .export = c("divide_1e7", "gt3x_2_csv", "header_csv", "read_info", "save_accel", "save_header", "substrRight", "transform_dates"),
-                    .packages = c("tictoc", "read.gt3x", "tidyverse", "data.table", "tcltk"),
+                    .packages = c("tictoc", "read.gt3x", "tidyverse", "data.table", "tcltk", "hms"),
                     .inorder = TRUE,
                     .options.snow = opts, .errorhandling = "pass") %dopar% {
-                      
-                    gt3x_2_csv(file_names[i])
-                    gc(verbose = FALSE)
+                      gt3x_2_csv(file_names[i])
+                      gc(verbose = FALSE)
                     }
   
   tictoc::toc()

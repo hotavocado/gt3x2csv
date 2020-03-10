@@ -1,4 +1,5 @@
 ## FUNCTION THAT CONVERTS A GT3X FILE IN CSV FILE
+
 # Path refers to the folder where the GT3X files are stored
 #' @title substrRight
 #' 
@@ -7,7 +8,7 @@
 #' @param n the number of characters to extract from the string
 #' @param j the number of characters to ignore in the end of the string
 
-substrRight <- function( x, n = nchar( x ) - j, j = 0){
+substrRight <- function( x, n = nchar( x ) - j, j = 0) {
   substr( x, nchar( x ) - ( n + j ) + 1, nchar( x ) - j)
 }
 
@@ -52,7 +53,7 @@ read_info <- function(file_txt) {
     spread(key, value)
   
   info_file %>%
-    rename_all(funs(make.names((names(info_file))))) %>%
+    rename_all(make.names) %>%
     mutate_at(vars( Download.Date, Last.Sample.Time, Start.Date, Stop.Date), as.numeric) %>%
     mutate_at(vars( Download.Date, Last.Sample.Time, Start.Date, Stop.Date), divide_1e7) %>%
     mutate_at(vars( Download.Date, Last.Sample.Time, Start.Date, Stop.Date), transform_dates)
@@ -79,10 +80,10 @@ save_header <- function(df_file, dest_csv, file_id)
   
   header_txt <- paste0( "------------ Data File Created By ActiGraph GT3X+ ActiLife v6.13.4 Firmware v1.9.2 date format dd/MM/yyyy at ", df_file$Sample.Rate, "Hz  Filter Normal -----------\n",
                         "Serial Number: ", df_file$Serial.Number, "\n",
-                        "Start Time ", as_hms(df_file$Start.Date), "\n",
+                        "Start Time ", hms::as_hms(df_file$Start.Date), "\n",
                         "Start Date ", format(df_file$Start.Date, "%m/%d/%Y"), "\n",
                         "Epoch Period (hh:mm:ss) 00:00:00\n",
-                        "Download Time ", as_hms(df_file$Download.Date), "\n",
+                        "Download Time ", hms::as_hms(df_file$Download.Date), "\n",
                         "Download Date ", format(df_file$Download.Date, "%m/%d/%Y"), "\n",
                         "Current Memory Address: 0\n",
                         "Current Battery Voltage: ", sub(",", ".", df_file$Battery.Voltage),"     Mode = 12\n",
@@ -202,8 +203,9 @@ gt3x_2_csv <- function(gt3x_file) {
     
   } 
   
-  
-  sink(paste0(destPath, '/', file_id, '_log.txt'))
+  log <- file(paste0(destPath, '/', file_id, '_log.txt'), open = 'wt')
+  sink(log)
+  sink(log, type = 'message')
   
   message("Started processing file ", file_id, '.gt3x')
   
@@ -211,8 +213,9 @@ gt3x_2_csv <- function(gt3x_file) {
   
   header_csv(gt3x_file)
   
-  save_accel(gt3x_file)
+  #save_accel(gt3x_file)
   
+  sink(type = 'message')
   sink()
   
   #delete unzipped content
