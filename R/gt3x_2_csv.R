@@ -213,7 +213,7 @@ gt3x_2_csv <- function(gt3x_file) {
   
   header_csv(gt3x_file)
   
-  #save_accel(gt3x_file)
+  save_accel(gt3x_file)
   
   sink(type = 'message')
   sink()
