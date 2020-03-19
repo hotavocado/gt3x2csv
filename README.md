@@ -1,6 +1,6 @@
 # gt3x2csv (hotavocado edit)
 
-This is an edited version of danilodpsanto/gt3x2csv package, currently tailored for my personal use.
+This is an edited version of danilodpsanto/gt3x2csv package, currently tailored for use for the Healthy Brain Network Actigraphy data.
 
 `gt3x2csv` is an R package designed to convert Actigraph gt3x files to csv files with the same data structure exported by the Actilife software.
 
