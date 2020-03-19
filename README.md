@@ -1,4 +1,4 @@
-# gt3x2csv (hotavocado edit)
+# gt3x2csv (Healthy Brain Network edit)
 
 This is an edited version of danilodpsanto/gt3x2csv package, currently tailored for use for the Healthy Brain Network Actigraphy data.
 
