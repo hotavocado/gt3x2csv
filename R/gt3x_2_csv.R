@@ -91,7 +91,7 @@ save_header <- function(df_file, dest_csv, file_id)
   
   # Writing the .csv document with the header
   
-  cat(header_txt, file = paste0(dest_csv, "/", file_id, "RAW.csv"))
+  cat(header_txt, file = paste0(dest_csv, "/", file_id, ".csv"))
   
 }
 
@@ -122,7 +122,7 @@ header_csv <- function(gt3x_file) {
   
   save_header(df_file = info_filedf, dest_csv = destPath, file_id = file_id)
   
-  message("Header saved as: ", file_id, "RAW.csv")
+  message("Header saved as: ", file_id, ".csv")
   
 }
 
@@ -166,7 +166,7 @@ save_accel <- function(gt3x_file) {
   tictoc::tic("Acceleration written")
   
   data.table::fwrite( x = accel_df,
-                      file = paste0(destPath, "/", file_id, "RAW.csv"), 
+                      file = paste0(destPath, "/", file_id, ".csv"), 
                       append = TRUE,
                       sep = ",",
                       col.names = TRUE,
@@ -203,11 +203,11 @@ gt3x_2_csv <- function(gt3x_file) {
     
   } 
   
-  log <- file(paste0(destPath, '/', file_id, '_log.txt'), open = 'wt')
-  sink(log)
-  sink(log, type = 'message')
+  #log <- file(paste0(destPath, '/', file_id, '_log.txt'), open = 'wt')
+  #sink(log)
+  #sink(log, type = 'message')
   
-  message("Started processing file ", file_id, '.gt3x')
+  message("- - - - - - - Started processing file ", file_id, '.gt3x - - - - - - -')
   
   tictoc::tic(paste( "File named", file_id, ".gt3x processed" ))
   
@@ -215,12 +215,12 @@ gt3x_2_csv <- function(gt3x_file) {
   
   save_accel(gt3x_file)
   
-  sink(type = 'message')
-  sink()
+  #sink(type = 'message')
+  #sink()
   
   #delete unzipped content
   unlink(paste0(destPath, "/unzip/", file_id), recursive = TRUE)
-  
+
   tictoc::toc()
   
 }  
