@@ -78,7 +78,7 @@ save_header <- function(df_file, dest_csv, file_id)
 {
   #formatting the metadata to the actilife header form
   
-  header_txt <- paste0( "------------ Data File Created By ActiGraph GT3X+ ActiLife v6.13.4 Firmware v1.9.2 date format dd/MM/yyyy at ", df_file$Sample.Rate, "Hz  Filter Normal -----------\n",
+  header_txt <- paste0( "------------ Data File Created By ActiGraph GT3X+ ActiLife v6.13.4 Firmware v1.9.2 date format M/d/yyyy at ", df_file$Sample.Rate, "Hz  Filter Normal -----------\n",
                         "Serial Number: ", df_file$Serial.Number, "\n",
                         "Start Time ", hms::as_hms(df_file$Start.Date), "\n",
                         "Start Date ", format(df_file$Start.Date, "%m/%d/%Y"), "\n",
