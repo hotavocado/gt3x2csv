@@ -147,7 +147,7 @@ save_accel <- function(gt3x_file) {
   
   # Reading acceleration
   accel_df <- read.gt3x::read.gt3x(gt3x_file,
-                                   imputeZeroes = FALSE)
+                                   imputeZeroes = TRUE)
   
   accel_df <- as.data.frame(accel_df[ ,-4])
   
