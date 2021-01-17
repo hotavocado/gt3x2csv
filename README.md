@@ -14,7 +14,10 @@ devtools::install_github("hotavocado/gt3x2csv")
 
 ## Usage
 
-`gt3x_2_csv("path_to_gt3x_file")`
+``` r
+gt3x_2_csv("path_to_gt3x_file")
+
+```
 
 These are the modifications from the [original package](https://github.com/danilodpsantos/gt3x2csv):
 
