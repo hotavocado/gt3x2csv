@@ -187,13 +187,13 @@ save_accel <- function(gt3x_file) {
 #' @seealso gt3x_folder_2_csv converts a folder 
 #' @seealso gt3x_2_csv_par converts a a folder using paralell processing
 
-gt3x_2_csv <- function(gt3x_file) {
+gt3x_2_csv <- function(gt3x_file, folder_name = '/csv') {
   
   filePath <- normalizePath(gt3x_file)
   parentPath <- dirname(dirname(filePath))
   file_id <- str_replace(basename(filePath), '\\..*$', '')
   #create output folder, named 'csv' in parent path
-  destPath <- paste0(parentPath, '/csv')
+  destPath <- paste0(parentPath, folder_name)
   
   if ( dir.exists(destPath) == FALSE ) {
     
