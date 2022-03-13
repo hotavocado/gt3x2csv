@@ -211,9 +211,9 @@ gt3x_2_csv <- function(gt3x_file, folder_name = '/csv') {
   
   tictoc::tic(paste( "File named", file_id, ".gt3x processed" ))
   
-  header_csv(gt3x_file)
+  header_csv(gt3x_file, folder_name)
   
-  save_accel(gt3x_file)
+  save_accel(gt3x_file, folder_name)
   
   #sink(type = 'message')
   #sink()
