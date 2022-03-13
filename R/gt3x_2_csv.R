@@ -104,13 +104,13 @@ save_header <- function(df_file, dest_csv, file_id)
 #' @param dest default = same directory of the data.  the destination were the .csv file is going to be placed (to be implemented)
 
 
-header_csv <- function(gt3x_file) {
+header_csv <- function(gt3x_file, folder_name = '/csv') {
   
   filePath <- normalizePath(gt3x_file)
   parentPath <- dirname(dirname(filePath))
   file_id <- str_replace(basename(filePath), '\\..*$', '')
   #create output folder, named 'csv' in parent path
-  destPath <- paste0(parentPath, '/csv')
+  destPath <- paste0(parentPath, folder_name)
   
   # Unzipping the file 
   read.gt3x::unzip_single_gt3x(gt3x_file, location = paste0(destPath, '/unzip'), verbose = FALSE)
@@ -135,13 +135,13 @@ header_csv <- function(gt3x_file) {
 #' @details Reads the binary data inside the .gt3x file and saves it in .csv format
 #' @param acc.file the path to te .gt3x file 
 
-save_accel <- function(gt3x_file) {
+save_accel <- function(gt3x_file, folder_name = '/csv') {
   
   filePath <- normalizePath(gt3x_file)
   parentPath <- dirname(dirname(filePath))
   file_id <- str_replace(basename(filePath), '\\..*$', '')
   #create output folder, named 'csv' in parent path
-  destPath <- paste0(parentPath, '/csv')
+  destPath <- paste0(parentPath, folder_name)
   
   message("Reading acceleration: ", file_id, '.gt3x')
   
